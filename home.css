@@ -1,0 +1,158 @@
+
+:root {
+    --primary-color: #2563eb; /* สีหลักของธีม */
+    --background-color: #f0f7ff; /* สีพื้นหลังของหน้าเว็บ */
+    --text-color: #1f2937; /* สีข้อความ */
+    --card-background: #ffffff; /* สีพื้นหลังของ container */
+    --border-radius: 16px; /* กำหนดความโค้งของมุม */
+    --transition-speed: 0.3s; /* ความเร็วของ transition */
+}
+
+/* สไตล์ของ <body> */
+body {
+    margin: 0; /* รีเซ็ต margin */
+    padding: 0; /* รีเซ็ต padding */
+    min-height: 100vh; /* ให้ body สูงเต็มจอ */
+    font-family: 'Kanit', 'Sarabun', sans-serif; /* ใช้ฟอนต์จาก Google Fonts */
+    background-color: var(--background-color); /* กำหนดสีพื้นหลัง */
+    
+    
+    background-size: 60px 60px;
+
+    display: flex; /* จัดให้อยู่กึ่งกลางทั้งแนวนอนและแนวตั้ง */
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color); /* สีของข้อความ */
+    line-height: 1.7; /* ความสูงของบรรทัด */
+}
+
+/* สไตล์ของ .container */
+.container {
+    background-color: var(--card-background); /* ใช้สีพื้นหลัง */
+    border-radius: var(--border-radius); /* กำหนดความโค้งของขอบ */
+    padding: 3rem; /* ระยะห่างภายใน */
+    width: 90%; /* ความกว้างสูงสุด 90% ของหน้าจอ */
+    max-width: 600px; /* กำหนดขนาดสูงสุดของ container */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    transform: translateY(0); /* ไม่มีการยกขึ้นเริ่มต้น */
+    transition: transform var(--transition-speed) ease; /* เพิ่ม transition */
+    position: relative; /* ใช้สำหรับ pseudo-element */
+    overflow: hidden; /* ป้องกันเนื้อหาเกินขอบ */
+}
+
+/* เส้นไล่สีด้านบนของ container */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), #60a5fa);
+}
+
+/* เพิ่มเอฟเฟกต์เมื่อ hover ที่ container */
+.container:hover {
+    transform: translateY(-5px); /* ขยับขึ้นเล็กน้อย */
+}
+
+/* สไตล์ของ h1 */
+h1 {
+    color: var(--primary-color); /* กำหนดสีให้ตรงกับธีม */
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* เส้นคั่นใต้ h1 */
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* สไตล์ของ p */
+p {
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: background-color var(--transition-speed) ease;
+}
+
+/* เปลี่ยนพื้นหลังของ p เมื่อ hover */
+p:hover {
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+/* สไตล์ของลิงก์ */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color var(--transition-speed) ease;
+}
+
+/* เส้นขีดใต้ลิงก์เมื่อ hover */
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed) ease;
+}
+
+/* เปลี่ยนสีลิงก์เมื่อ hover */
+a:hover {
+    color: #1e40af;
+}
+
+/* เส้นขีดใต้ลิงก์ขยายเมื่อ hover */
+a:hover::after {
+    width: 100%;
+}
+
+/* Media queries สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem;
+        width: 95%;
+        margin: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+        padding: 0.6rem;
+    }
+}
+
+/* แอนิเมชัน fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* นำแอนิเมชันมาใช้กับ container */
+.container {
+    animation: fadeIn 0.8s ease-out;
+}

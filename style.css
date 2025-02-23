@@ -1,0 +1,277 @@
+/* รีเซ็ตและลักษณะฐาน */
+* {
+    margin: 0; /* รีเซ็ตค่าขอบของทุกองค์ประกอบ */
+    padding: 0; /* รีเซ็ตค่าระยะห่างด้านในของทุกองค์ประกอบ */
+    box-sizing: border-box; /* ทำให้ขนาดขององค์ประกอบรวมถึง padding และ border */
+}
+
+/* กำหนดตัวแปรสีหลักที่ใช้ในธีม */
+:root {
+    --primary-color: #021237; /* สีหลัก */
+    --secondary-color: #050b1e; /* สีรอง */
+    --accent-color: #060b10; /* สีเน้น */
+    --text-color: #1f2937; /* สีข้อความ */
+    --background-light: #f8fafc; /* สีพื้นหลังแบบอ่อน */
+    --container-bg: #ffffff; /* สีพื้นหลังของ container */
+}
+
+/* สไตล์ของ <body> */
+body {
+    font-family: 'Kanit', 'Sarabun', sans-serif; /* กำหนดฟอนต์ */
+    line-height: 1.7; /* กำหนดระยะห่างระหว่างบรรทัด */
+    color: var(--text-color); /* ใช้สีข้อความที่กำหนด */
+    background-color: var(--background-light); /* ใช้สีพื้นหลัง */
+    
+}
+
+/* สไตล์ของ header */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* ไล่สีพื้นหลัง */
+    color: white; /* ใช้สีข้อความเป็นสีขาว */
+    padding: 3rem 0; /* กำหนดระยะห่างด้านใน */
+    text-align: center; /* จัดตำแหน่งข้อความให้อยู่กึ่งกลาง */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ header */
+    position: relative; /* ตั้งค่าตำแหน่ง */
+    overflow: hidden; /* ป้องกันการล้นขององค์ประกอบภายใน */
+}
+
+/* เอฟเฟกต์แสงเบลอใน header */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+/* สไตล์ของหัวข้อหลักใน header */
+header h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ข้อความ */
+    animation: fadeInDown 0.8s ease-out; /* ใช้แอนิเมชัน */
+}
+
+/* เมนูนำทาง */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* สไตล์ของลิงก์ในเมนู */
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+/* เอฟเฟกต์ hover ของลิงก์ */
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* สไตล์ของ .container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: var(--container-bg);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* สไตล์ของ h2 */
+h2 {
+    color: var(--primary-color);
+    margin: 2.5rem 0 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--accent-color);
+    font-size: 2rem;
+    position: relative;
+}
+
+/* สร้างเส้นตกแต่งใต้ h2 */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* สไตล์ของ h3 */
+h3 {
+    color: var(--secondary-color);
+    margin: 2rem 0 1rem;
+    font-size: 1.5rem;
+}
+
+/* สไตล์ของ p */
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* สไตล์ของ ul */
+ul {
+    margin: 1.5rem 0 2rem 2rem;
+    list-style-type: none;
+}
+
+/* สไตล์ของ li */
+ul li {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+/* สร้างจุดนำหน้าของ li */
+ul li::before {
+    content: '•';
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -0.2rem;
+}
+
+/* สไตล์ของลิงก์ */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 0.2rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* เส้นขีดใต้ลิงก์เมื่อ hover */
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* สไตล์ของวิดีโอ */
+video {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 2rem auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+/* เอฟเฟกต์เมื่อ hover วิดีโอ */
+video:hover {
+    transform: scale(1.02);
+}
+
+/* แอนิเมชัน */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* การปรับแต่งสำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li a {
+        display: block;
+        width: 200px;
+        text-align: center;
+    }
+}
+
+iframe{
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 2rem auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+iframe:hover {
+    transform: scale(1.02);
+}
+
+img{
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 2rem auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
